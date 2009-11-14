@@ -1,0 +1,1177 @@
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20091114155840)
+Migrating to CreateConstraints (20091114160813)
+Migrating to CreateComments (20091114160931)
+Migrating to AddComatoseSupport (20091114201250)
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE TABLE `comatose_pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `parent_id` int(11), `full_path` text DEFAULT '', `title` varchar(255), `slug` varchar(255), `keywords` varchar(255), `body` text, `filter_type` varchar(25) DEFAULT 'Textile', `author` varchar(255), `position` int(11) DEFAULT 0, `version` int(11), `updated_on` datetime, `created_on` datetime) ENGINE=InnoDB[0m
+  [4;36;1mComatosePage Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `comatose_pages`[0m
+  [4;35;1mSQL (24.9ms)[0m   [0mCREATE TABLE `comatose_page_versions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `comatose_page_id` int(11), `version` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (5.9ms)[0m   [0;1mALTER TABLE `comatose_page_versions` ADD `parent_id` int(11) DEFAULT NULL[0m
+  [4;35;1mSQL (6.0ms)[0m   [0mALTER TABLE `comatose_page_versions` ADD `full_path` text DEFAULT NULL[0m
+  [4;36;1mSQL (5.1ms)[0m   [0;1mALTER TABLE `comatose_page_versions` ADD `title` varchar(255) DEFAULT NULL[0m
+  [4;35;1mSQL (4.4ms)[0m   [0mALTER TABLE `comatose_page_versions` ADD `slug` varchar(255) DEFAULT NULL[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1mALTER TABLE `comatose_page_versions` ADD `keywords` varchar(255) DEFAULT NULL[0m
+  [4;35;1mSQL (6.2ms)[0m   [0mALTER TABLE `comatose_page_versions` ADD `body` text DEFAULT NULL[0m
+  [4;36;1mSQL (4.4ms)[0m   [0;1mALTER TABLE `comatose_page_versions` ADD `filter_type` varchar(25) DEFAULT 'Textile'[0m
+  [4;35;1mSQL (4.3ms)[0m   [0mALTER TABLE `comatose_page_versions` ADD `author` varchar(255) DEFAULT NULL[0m
+  [4;36;1mSQL (5.5ms)[0m   [0;1mALTER TABLE `comatose_page_versions` ADD `position` int(11) DEFAULT 0[0m
+  [4;35;1mSQL (5.1ms)[0m   [0mALTER TABLE `comatose_page_versions` ADD `updated_on` datetime DEFAULT NULL[0m
+  [4;36;1mSQL (5.2ms)[0m   [0;1mALTER TABLE `comatose_page_versions` ADD `created_on` datetime DEFAULT NULL[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mComatosePage Create (0.2ms)[0m   [0;1mINSERT INTO `comatose_pages` (`slug`, `created_on`, `filter_type`, `title`, `body`, `updated_on`, `author`, `version`, `parent_id`, `position`, `full_path`, `keywords`) VALUES(NULL, '2009-11-14 20:13:25', 'Textile', 'Home Page', 'h1. Welcome\n\nYour content goes here...', '2009-11-14 20:13:25', 'System', 1, NULL, 0, NULL, NULL)[0m
+  [4;35;1mComatosePage::Version Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `comatose_page_versions`[0m
+  [4;36;1mComatosePage::Version Create (0.3ms)[0m   [0;1mINSERT INTO `comatose_page_versions` (`slug`, `created_on`, `filter_type`, `title`, `body`, `updated_on`, `author`, `version`, `comatose_page_id`, `parent_id`, `position`, `full_path`, `keywords`) VALUES(NULL, '2009-11-14 20:13:25', 'Textile', 'Home Page', 'h1. Welcome\n\nYour content goes here...', '2009-11-14 20:13:25', 'System', 1, 1, NULL, 0, NULL, NULL)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091114201250')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `comatose_page_versions`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mdescribe `comatose_page_versions`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `comatose_page_versions`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `comatose_pages`[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mdescribe `comatose_pages`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `comatose_pages`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `comments`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `comments`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `comments`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mdescribe `constraints`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `constraints`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 20:15:31) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>[], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mComatosePage Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `comatose_pages`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mComatosePage Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `comatose_pages`[0m
+
+NoMethodError (undefined method `acts_as_tree' for #<Class:0x249cc4c>):
+  
+
+Rendered rescues/_trace (35.3ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 20:23:48) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>[], "layout"=>"comatose_content.html.erb"}
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mComatosePage Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `comatose_pages`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mComatosePage Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `comatose_pages`[0m
+
+NoMethodError (undefined method `acts_as_tree' for #<Class:0x237b4e4>):
+  
+
+Rendered rescues/_trace (92.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 20:24:14) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>[], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = '') LIMIT 1[0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (full_path = '404') LIMIT 1[0m
+Completed in 17ms (View: 1, DB: 1) | 404 Not Found [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#index (for 127.0.0.1 at 2009-11-14 20:24:31) [GET]
+  [4;36;1mComatosePage Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+  [4;35;1mComatosePage Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `comatose_pages`[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/index
+  [4;36;1mComatosePage::Version Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 1) ORDER BY version[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) [0m
+Rendered comatose_admin/_page_list_item (100.4ms)
+Completed in 238ms (View: 230, DB: 3) | 200 OK [http://0.0.0.0/comatose_admin]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#edit (for 127.0.0.1 at 2009-11-14 20:24:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.`id` = 1) [0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/edit
+  [4;35;1mComatosePage::Version Load (0.4ms)[0m   [0mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 1) ORDER BY version[0m
+Rendered comatose_admin/_form (34.4ms)
+Completed in 125ms (View: 121, DB: 1) | 200 OK [http://0.0.0.0/comatose_admin/edit/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#index (for 127.0.0.1 at 2009-11-14 20:24:38) [GET]
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/index
+  [4;36;1mComatosePage::Version Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 1) ORDER BY version[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) [0m
+Rendered comatose_admin/_page_list_item (5.5ms)
+Completed in 14ms (View: 12, DB: 1) | 200 OK [http://0.0.0.0/comatose_admin]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#new (for 127.0.0.1 at 2009-11-14 20:24:45) [GET]
+  Parameters: {"parent"=>"1"}
+  [4;35;1mComatosePage Load (0.5ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/new
+  [4;36;1mComatosePage Load (0.5ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) ORDER BY position, title[0m
+Rendered comatose_admin/_form (13.3ms)
+Completed in 55ms (View: 52, DB: 1) | 200 OK [http://0.0.0.0/comatose_admin/new?parent=1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#new (for 127.0.0.1 at 2009-11-14 20:25:05) [POST]
+  Parameters: {"commit"=>"Create Page", "page"=>{"created_on(2i)"=>"11", "slug"=>"home", "created_on(3i)"=>"14", "filter_type"=>"Textile", "created_on(4i)"=>"20", "body"=>"wkejdhskjdchsd", "title"=>"Home", "created_on(5i)"=>"24", "created_on(1i)"=>"2009", "parent_id"=>"1", "keywords"=>""}}
+  [4;36;1mComatosePage Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mComatosePage Load (0.3ms)[0m   [0;1mSELECT `comatose_pages`.id FROM `comatose_pages` WHERE (`comatose_pages`.`slug` = BINARY 'home' AND `comatose_pages`.parent_id = 1) LIMIT 1[0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.`id` = 1) [0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (parent_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mComatosePage Create (0.1ms)[0m   [0mINSERT INTO `comatose_pages` (`slug`, `created_on`, `filter_type`, `title`, `body`, `updated_on`, `author`, `version`, `parent_id`, `position`, `full_path`, `keywords`) VALUES('home', '2009-11-14 20:25:05', 'Textile', 'Home', 'wkejdhskjdchsd', '2009-11-14 20:25:05', '127.0.0.1', 1, 1, 1, 'home', '')[0m
+  [4;36;1mComatosePage::Version Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `comatose_page_versions`[0m
+  [4;35;1mComatosePage::Version Create (0.2ms)[0m   [0mINSERT INTO `comatose_page_versions` (`slug`, `created_on`, `filter_type`, `title`, `body`, `updated_on`, `author`, `version`, `comatose_page_id`, `parent_id`, `position`, `full_path`, `keywords`) VALUES('home', '2009-11-14 20:25:05', 'Textile', 'Home', 'wkejdhskjdchsd', '2009-11-14 20:25:05', '127.0.0.1', 1, 2, 1, 1, 'home', '')[0m
+  [4;36;1mComatosePage Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 2) ORDER BY position, title[0m
+  [4;35;1mSQL (39.2ms)[0m   [0mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/comatose_admin
+Completed in 54ms (DB: 43) | 302 Found [http://0.0.0.0/comatose_admin/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#index (for 127.0.0.1 at 2009-11-14 20:25:05) [GET]
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/index
+  [4;36;1mComatosePage::Version Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 1) ORDER BY version[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) [0m
+  [4;36;1mComatosePage Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) ORDER BY position, title[0m
+  [4;35;1mComatosePage::Version Load (0.3ms)[0m   [0mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 2) ORDER BY version[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 2) [0m
+Rendered comatose_admin/_page_list_item (6.5ms)
+Rendered comatose_admin/_page_list_item (13.0ms)
+Completed in 22ms (View: 18, DB: 2) | 200 OK [http://0.0.0.0/comatose_admin]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#edit (for 127.0.0.1 at 2009-11-14 20:25:12) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mComatosePage Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.`id` = 2) [0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/edit
+  [4;36;1mComatosePage Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) ORDER BY position, title[0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 2) ORDER BY position, title[0m
+  [4;36;1mComatosePage::Version Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 2) ORDER BY version[0m
+Rendered comatose_admin/_form (14.2ms)
+Completed in 20ms (View: 17, DB: 1) | 200 OK [http://0.0.0.0/comatose_admin/edit/2]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#edit (for 127.0.0.1 at 2009-11-14 20:25:39) [POST]
+  Parameters: {"commit"=>"Save Changes", "id"=>"2", "page"=>{"created_on(2i)"=>"11", "slug"=>"home", "created_on(3i)"=>"14", "filter_type"=>"[No Filter]", "created_on(4i)"=>"20", "body"=>"wkejdhskjdchsd\r\nfsdf\r\nsdf\r\nsdf\r\nsdf", "title"=>"Designers", "created_on(5i)"=>"25", "created_on(1i)"=>"2009", "parent_id"=>"1", "keywords"=>""}}
+  [4;36;1mComatosePage Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.`id` = 2) [0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT `comatose_pages`.id FROM `comatose_pages` WHERE (`comatose_pages`.`slug` = BINARY 'home' AND `comatose_pages`.parent_id = 1 AND `comatose_pages`.id <> 2) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max(`comatose_page_versions`.version) AS max_version FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 2) [0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.`id` = 1) [0m
+  [4;36;1mComatosePage Update (0.2ms)[0m   [0;1mUPDATE `comatose_pages` SET `version` = 2, `body` = 'wkejdhskjdchsd\r\nfsdf\r\nsdf\r\nsdf\r\nsdf', `title` = 'Designers', `filter_type` = '[No Filter]', `created_on` = '2009-11-14 20:25:00' WHERE `id` = 2[0m
+  [4;35;1mComatosePage::Version Create (0.2ms)[0m   [0mINSERT INTO `comatose_page_versions` (`slug`, `created_on`, `filter_type`, `title`, `body`, `updated_on`, `author`, `version`, `comatose_page_id`, `parent_id`, `position`, `full_path`, `keywords`) VALUES('home', '2009-11-14 20:25:00', '[No Filter]', 'Designers', 'wkejdhskjdchsd\r\nfsdf\r\nsdf\r\nsdf\r\nsdf', '2009-11-14 20:25:05', '127.0.0.1', 2, 2, 1, 1, 'home', '')[0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 2) ORDER BY position, title[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT `comatose_pages`.id FROM `comatose_pages` WHERE (`comatose_pages`.`slug` = BINARY 'home' AND `comatose_pages`.parent_id = 1 AND `comatose_pages`.id <> 2) LIMIT 1[0m
+  [4;36;1mComatosePage Update (0.2ms)[0m   [0;1mUPDATE `comatose_pages` SET `updated_on` = '2009-11-14 20:25:39' WHERE `id` = 2[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/comatose_admin
+Completed in 15ms (DB: 4) | 302 Found [http://0.0.0.0/comatose_admin/edit/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#index (for 127.0.0.1 at 2009-11-14 20:25:39) [GET]
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/index
+  [4;36;1mComatosePage::Version Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 1) ORDER BY version[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) [0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) ORDER BY position, title[0m
+  [4;35;1mComatosePage::Version Load (0.3ms)[0m   [0mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 2) ORDER BY version[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 2) [0m
+Rendered comatose_admin/_page_list_item (6.2ms)
+Rendered comatose_admin/_page_list_item (13.2ms)
+Completed in 21ms (View: 18, DB: 2) | 200 OK [http://0.0.0.0/comatose_admin]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#edit (for 127.0.0.1 at 2009-11-14 20:25:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mComatosePage Load (0.6ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.`id` = 1) [0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/edit
+  [4;36;1mComatosePage::Version Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 1) ORDER BY version[0m
+Rendered comatose_admin/_form (17.1ms)
+Completed in 25ms (View: 21, DB: 1) | 200 OK [http://0.0.0.0/comatose_admin/edit/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#edit (for 127.0.0.1 at 2009-11-14 20:25:50) [POST]
+  Parameters: {"commit"=>"Save Changes", "id"=>"1", "page"=>{"created_on(2i)"=>"11", "created_on(3i)"=>"14", "filter_type"=>"Textile", "created_on(4i)"=>"20", "body"=>"h1. Welcome\r\n\r\nYour content goes here...", "title"=>"Home Page", "created_on(5i)"=>"13", "created_on(1i)"=>"2009", "keywords"=>""}}
+  [4;36;1mComatosePage Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.`id` = 1) [0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT `comatose_pages`.id FROM `comatose_pages` WHERE (`comatose_pages`.`slug` = BINARY 'home-page' AND `comatose_pages`.parent_id IS NULL AND `comatose_pages`.id <> 1) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max(`comatose_page_versions`.version) AS max_version FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 1) [0m
+  [4;35;1mComatosePage Update (0.2ms)[0m   [0mUPDATE `comatose_pages` SET `version` = 2, `body` = 'h1. Welcome\r\n\r\nYour content goes here...', `slug` = 'home-page', `full_path` = '', `keywords` = '', `created_on` = '2009-11-14 20:13:00' WHERE `id` = 1[0m
+  [4;36;1mComatosePage::Version Create (0.3ms)[0m   [0;1mINSERT INTO `comatose_page_versions` (`slug`, `created_on`, `filter_type`, `title`, `body`, `updated_on`, `author`, `version`, `comatose_page_id`, `parent_id`, `position`, `full_path`, `keywords`) VALUES('home-page', '2009-11-14 20:13:00', 'Textile', 'Home Page', 'h1. Welcome\r\n\r\nYour content goes here...', '2009-11-14 20:13:25', 'System', 2, 1, NULL, 0, '', '')[0m
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) ORDER BY position, title[0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.`id` = 1) [0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT `comatose_pages`.id FROM `comatose_pages` WHERE (`comatose_pages`.`slug` = BINARY 'home' AND `comatose_pages`.parent_id = 1 AND `comatose_pages`.id <> 2) LIMIT 1[0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 2) ORDER BY position, title[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT `comatose_pages`.id FROM `comatose_pages` WHERE (`comatose_pages`.`slug` = BINARY 'home-page' AND `comatose_pages`.parent_id IS NULL AND `comatose_pages`.id <> 1) LIMIT 1[0m
+  [4;36;1mComatosePage Update (0.2ms)[0m   [0;1mUPDATE `comatose_pages` SET `updated_on` = '2009-11-14 20:25:50', `author` = '127.0.0.1' WHERE `id` = 1[0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT `comatose_pages`.id FROM `comatose_pages` WHERE (`comatose_pages`.`slug` = BINARY 'home' AND `comatose_pages`.parent_id = 1 AND `comatose_pages`.id <> 2) LIMIT 1[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/comatose_admin
+Completed in 78ms (DB: 5) | 302 Found [http://0.0.0.0/comatose_admin/edit/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#index (for 127.0.0.1 at 2009-11-14 20:25:50) [GET]
+  [4;36;1mComatosePage Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/index
+  [4;35;1mComatosePage::Version Load (0.3ms)[0m   [0mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 1) ORDER BY version[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) [0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) ORDER BY position, title[0m
+  [4;36;1mComatosePage::Version Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 2) ORDER BY version[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 2) [0m
+Rendered comatose_admin/_page_list_item (6.3ms)
+Rendered comatose_admin/_page_list_item (12.8ms)
+Completed in 21ms (View: 18, DB: 1) | 200 OK [http://0.0.0.0/comatose_admin]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 20:26:21) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>[], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = '') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 32ms (View: 29, DB: 0) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#export (for 127.0.0.1 at 2009-11-14 20:26:32) [GET]
+  [4;35;1mComatosePage Load (0.5ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) [0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) ORDER BY position, title[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 2) [0m
+Sending data comatose-pages.yml
+Completed in 10ms (View: 5, DB: 1) | 200 OK [http://0.0.0.0/comatose_admin/export]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 20:34:23) [GET]
+
+ActionController::UnknownAction (No action responded to index. Actions: ):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 20:35:00) [GET]
+Rendering template within layouts/application
+Rendering welcome/index
+Completed in 29ms (View: 28, DB: 1) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 20:36:06) [GET]
+Rendering template within layouts/application
+Rendering welcome/index
+Completed in 6ms (View: 5, DB: 0) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 20:36:37) [GET]
+Rendering template within layouts/application
+Rendering welcome/index
+Completed in 8ms (View: 6, DB: 0) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 20:37:32) [GET]
+Rendering template within layouts/application
+Rendering welcome/index
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 20:46:35) [GET]
+Rendering template within layouts/application
+Rendering welcome/index
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 20:55:34) [GET]
+Rendering template within layouts/application
+Rendering welcome/index
+Completed in 6ms (View: 5, DB: 0) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 20:57:02) [GET]
+Rendering template within layouts/application
+Rendering welcome/index
+Completed in 6ms (View: 5, DB: 0) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 20:57:41) [GET]
+Rendering template within layouts/application
+Rendering welcome/index
+Completed in 8ms (View: 7, DB: 0) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:02:42) [GET]
+Rendering template within layouts/application
+Rendering welcome/index
+Completed in 14ms (View: 13, DB: 0) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:02:55) [GET]
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mConstraint Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `constraints` [0m
+  [4;36;1mConstraint Load (0.4ms)[0m   [0;1mSELECT * FROM `constraints` LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `constraints` LIMIT 1[0m
+Completed in 290484ms (View: 290480, DB: 3) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:07:51) [GET]
+  [4;35;1mConstraint Load (0.3ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (33.2ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 4996ms (View: 4957, DB: 34) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ConstraintsController#index (for 127.0.0.1 at 2009-11-14 21:08:40) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/constraints
+Rendering constraints/index
+  [4;35;1mConstraint Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 80ms (View: 71, DB: 2) | 200 OK [http://0.0.0.0/constraints/]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ConstraintsController#new (for 127.0.0.1 at 2009-11-14 21:08:42) [GET]
+  [4;35;1mConstraint Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Rendering template within layouts/constraints
+Rendering constraints/new
+Completed in 23ms (View: 14, DB: 3) | 200 OK [http://0.0.0.0/constraints/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ConstraintsController#create (for 127.0.0.1 at 2009-11-14 21:09:04) [POST]
+  Parameters: {"constraint"=>{"title"=>"Coltan", "unit"=>"child soldiers", "description"=>"and what? i want my ipod dammit.", "value"=>"60"}, "commit"=>"Create", "authenticity_token"=>"NM4wK5IFXGUVvaAbp7LgtJ/jd44pYd2a/taJzohCpMI="}
+  [4;35;1mConstraint Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mConstraint Create (0.2ms)[0m   [0mINSERT INTO `constraints` (`updated_at`, `title`, `unit`, `value`, `description`, `created_at`) VALUES('2009-11-14 21:09:04', 'Coltan', 'child soldiers', 60.0, 'and what? i want my ipod dammit.', '2009-11-14 21:09:04')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/constraints/4
+Completed in 13ms (DB: 3) | 302 Found [http://0.0.0.0/constraints]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ConstraintsController#show (for 127.0.0.1 at 2009-11-14 21:09:04) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mConstraint Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+  [4;35;1mConstraint Load (0.4ms)[0m   [0mSELECT * FROM `constraints` WHERE (`constraints`.`id` = 4) [0m
+Rendering template within layouts/constraints
+Rendering constraints/show
+Completed in 23ms (View: 15, DB: 2) | 200 OK [http://0.0.0.0/constraints/4]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:09:07) [GET]
+  [4;35;1mConstraint Load (0.3ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 16ms (View: 8, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-11-14 21:14:03) [GET]
+
+SyntaxError (/Users/wood/mycode/rationr/app/controllers/welcome_controller.rb:10: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (103.7ms)
+Rendered rescues/_request_and_response (1.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:16:38) [GET]
+  [4;35;1mConstraint Load (0.3ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 12ms (View: 5, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:16:49) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 10ms (View: 2, DB: 2) | 200 OK [http://0.0.0.0/public_constraint/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:16:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mConstraint Load (0.3ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 11ms (View: 3, DB: 3) | 200 OK [http://0.0.0.0/public_constraint/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#show (for 127.0.0.1 at 2009-11-14 21:17:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mConstraint Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+  [4;35;1mConstraint Load (0.2ms)[0m   [0mSELECT * FROM `constraints` WHERE (`constraints`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering welcome/show
+Completed in 102396ms (View: 102388, DB: 2) | 200 OK [http://0.0.0.0/public_constraint/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:19:42) [GET]
+  [4;35;1mConstraint Load (0.4ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 11ms (View: 3, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:21:43) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 16ms (View: 8, DB: 3) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:21:57) [GET]
+  [4;35;1mConstraint Load (1.5ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (4.8ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 34ms (View: 13, DB: 6) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#show (for 127.0.0.1 at 2009-11-14 21:21:59) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mConstraint Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+  [4;35;1mConstraint Load (0.2ms)[0m   [0mSELECT * FROM `constraints` WHERE (`constraints`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering welcome/show
+Completed in 4299ms (View: 4291, DB: 2) | 200 OK [http://0.0.0.0/public_constraint/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:32:24) [GET]
+  [4;35;1mConstraint Load (0.3ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+
+ActionView::TemplateError (undefined local variable or method `sessions_path' for #<ActionView::Base:0x24ab378>) on line #7 of app/views/welcome/index.html.erb:
+4: 
+5: <h2>help me</h2>
+6: 
+7: <% form_tag sessions_path do %>  
+8:   Password: <%= password_field_tag :password %>  
+9:   <%= submit_tag "Login" %>  
+10: <% end %>
+
+    app/views/welcome/index.html.erb:7
+
+Rendered rescues/_trace (39.3ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:34:15) [GET]
+  [4;35;1mConstraint Load (0.4ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 38ms (View: 26, DB: 3) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2009-11-14 21:34:21) [POST]
+  Parameters: {"commit"=>"Login", "authenticity_token"=>"NM4wK5IFXGUVvaAbp7LgtJ/jd44pYd2a/taJzohCpMI=", "password"=>"secret"}
+
+NameError (uninitialized constant SessionsController):
+  
+
+Rendered rescues/_trace (26.4ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2009-11-14 21:35:27) [POST]
+  Parameters: {"commit"=>"Login", "authenticity_token"=>"NM4wK5IFXGUVvaAbp7LgtJ/jd44pYd2a/taJzohCpMI=", "password"=>"secret"}
+
+NameError (uninitialized constant SessionsController):
+  
+
+Rendered rescues/_trace (83.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2009-11-14 21:36:24) [POST]
+  Parameters: {"commit"=>"Login", "authenticity_token"=>"NM4wK5IFXGUVvaAbp7LgtJ/jd44pYd2a/taJzohCpMI=", "password"=>"secret"}
+
+NameError (uninitialized constant SessionsController):
+  
+
+Rendered rescues/_trace (25.2ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:36:40) [GET]
+  [4;36;1mConstraint Load (0.4ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 46ms (View: 30, DB: 3) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2009-11-14 21:37:05) [POST]
+  Parameters: {"commit"=>"Login", "authenticity_token"=>"NM4wK5IFXGUVvaAbp7LgtJ/jd44pYd2a/taJzohCpMI=", "password"=>"secret"}
+
+LoadError (Expected /Users/wood/mycode/rationr/app/controllers/session_controller.rb to define SessionController):
+  
+
+Rendered rescues/_trace (81.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2009-11-14 21:37:48) [POST]
+  Parameters: {"commit"=>"Login", "authenticity_token"=>"NM4wK5IFXGUVvaAbp7LgtJ/jd44pYd2a/taJzohCpMI=", "password"=>"secret"}
+
+NameError (uninitialized constant SessionsController):
+  
+
+Rendered rescues/_trace (24.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionController#create (for 127.0.0.1 at 2009-11-14 21:38:01) [POST]
+  Parameters: {"commit"=>"Login", "authenticity_token"=>"NM4wK5IFXGUVvaAbp7LgtJ/jd44pYd2a/taJzohCpMI=", "password"=>"secret"}
+
+NameError (undefined local variable or method `home_path' for #<SessionController:0x22673b4>):
+  app/controllers/session_controller.rb:8:in `create'
+
+Rendered rescues/_trace (110.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionController#create (for 127.0.0.1 at 2009-11-14 21:38:21) [POST]
+  Parameters: {"commit"=>"Login", "authenticity_token"=>"NM4wK5IFXGUVvaAbp7LgtJ/jd44pYd2a/taJzohCpMI=", "password"=>"secret"}
+Redirected to http://0.0.0.0:3000/
+Completed in 2ms (DB: 0) | 302 Found [http://0.0.0.0/login]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:38:22) [GET]
+  [4;35;1mConstraint Load (0.3ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 10ms (View: 5, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:39:55) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionController#create (for 127.0.0.1 at 2009-11-14 21:41:59) [POST]
+  Parameters: {"commit"=>"Login", "authenticity_token"=>"NM4wK5IFXGUVvaAbp7LgtJ/jd44pYd2a/taJzohCpMI=", "password"=>"yy"}
+Redirected to http://0.0.0.0:3000/
+Completed in 2ms (DB: 0) | 302 Found [http://0.0.0.0/login]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:41:59) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 14ms (View: 7, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionController#destroy (for 127.0.0.1 at 2009-11-14 21:42:05) [GET]
+Redirected to http://0.0.0.0:3000/
+Completed in 1ms (DB: 0) | 302 Found [http://0.0.0.0/logout]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:42:05) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionController#create (for 127.0.0.1 at 2009-11-14 21:42:09) [POST]
+  Parameters: {"commit"=>"Login", "authenticity_token"=>"Luz2Dt0j7whVc+scYqUQLo/rcAAfSPYXdrv7hOssHkc=", "password"=>"foo"}
+Redirected to http://0.0.0.0:3000/
+Completed in 2ms (DB: 0) | 302 Found [http://0.0.0.0/login]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:42:09) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 11ms (View: 4, DB: 3) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-11-14 21:44:04) [GET]
+
+SyntaxError (/Users/wood/mycode/rationr/app/controllers/constraints_controller.rb:87: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (29.4ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ConstraintsController#index (for 127.0.0.1 at 2009-11-14 21:44:19) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Redirected to http://0.0.0.0:3000/
+Completed in 4ms (DB: 0) | 302 Found [http://0.0.0.0/constraints/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:44:19) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionController#create (for 127.0.0.1 at 2009-11-14 21:44:34) [POST]
+  Parameters: {"commit"=>"Login", "authenticity_token"=>"Luz2Dt0j7whVc+scYqUQLo/rcAAfSPYXdrv7hOssHkc=", "password"=>"secret"}
+Redirected to http://0.0.0.0:3000/
+Completed in 2ms (DB: 0) | 302 Found [http://0.0.0.0/login]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:44:34) [GET]
+  [4;36;1mConstraint Load (0.4ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (21.1ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 45ms (View: 5, DB: 22) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ConstraintsController#index (for 127.0.0.1 at 2009-11-14 21:44:38) [GET]
+  [4;35;1mConstraint Load (0.3ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/constraints
+Rendering constraints/index
+  [4;36;1mConstraint Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 26ms (View: 20, DB: 2) | 200 OK [http://0.0.0.0/constraints/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 21:59:14) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 22:02:42) [GET]
+  [4;35;1mConstraint Load (0.3ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 22:03:12) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:04:37) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/about", "index"=>"about", "page"=>[], "layout"=>"comatose_application"}
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (full_path = '404') LIMIT 1[0m
+Completed in 204ms (View: 1, DB: 1) | 404 Not Found [http://0.0.0.0/about]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#index (for 127.0.0.1 at 2009-11-14 22:05:31) [GET]
+  [4;36;1mComatosePage Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+  [4;35;1mComatosePage Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `comatose_pages`[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/index
+  [4;36;1mComatosePage::Version Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 1) ORDER BY version[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) [0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) ORDER BY position, title[0m
+  [4;35;1mComatosePage::Version Load (0.5ms)[0m   [0mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 2) ORDER BY version[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 2) [0m
+Rendered comatose_admin/_page_list_item (7.6ms)
+Rendered comatose_admin/_page_list_item (173.6ms)
+Completed in 272ms (View: 264, DB: 4) | 200 OK [http://0.0.0.0/comatose_admin/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#new (for 127.0.0.1 at 2009-11-14 22:05:36) [GET]
+  Parameters: {"parent"=>"1"}
+  [4;36;1mComatosePage Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/new
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) ORDER BY position, title[0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 2) ORDER BY position, title[0m
+Rendered comatose_admin/_form (26.9ms)
+Completed in 53ms (View: 50, DB: 1) | 200 OK [http://0.0.0.0/comatose_admin/new?parent=1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#new (for 127.0.0.1 at 2009-11-14 22:05:43) [POST]
+  Parameters: {"commit"=>"Create Page", "authenticity_token"=>"Luz2Dt0j7whVc+scYqUQLo/rcAAfSPYXdrv7hOssHkc=", "page"=>{"created_on(2i)"=>"11", "slug"=>"about", "created_on(3i)"=>"14", "filter_type"=>"Textile", "created_on(4i)"=>"22", "body"=>"Wassuoo?!", "title"=>"about", "created_on(5i)"=>"05", "created_on(1i)"=>"2009", "parent_id"=>"1", "keywords"=>""}}
+  [4;36;1mComatosePage Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mComatosePage Load (0.1ms)[0m   [0;1mSELECT `comatose_pages`.id FROM `comatose_pages` WHERE (`comatose_pages`.`slug` = BINARY 'about' AND `comatose_pages`.parent_id = 1) LIMIT 1[0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.`id` = 1) [0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (parent_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mComatosePage Create (0.2ms)[0m   [0mINSERT INTO `comatose_pages` (`slug`, `created_on`, `filter_type`, `title`, `body`, `updated_on`, `author`, `version`, `parent_id`, `position`, `full_path`, `keywords`) VALUES('about', '2009-11-14 22:05:43', 'Textile', 'about', 'Wassuoo?!', '2009-11-14 22:05:43', '127.0.0.1', 1, 1, 2, 'about', '')[0m
+  [4;36;1mComatosePage::Version Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `comatose_page_versions`[0m
+  [4;35;1mComatosePage::Version Create (0.2ms)[0m   [0mINSERT INTO `comatose_page_versions` (`slug`, `created_on`, `filter_type`, `title`, `body`, `updated_on`, `author`, `version`, `comatose_page_id`, `parent_id`, `position`, `full_path`, `keywords`) VALUES('about', '2009-11-14 22:05:43', 'Textile', 'about', 'Wassuoo?!', '2009-11-14 22:05:43', '127.0.0.1', 1, 3, 1, 2, 'about', '')[0m
+  [4;36;1mComatosePage Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 3) ORDER BY position, title[0m
+  [4;35;1mSQL (40.5ms)[0m   [0mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/comatose_admin
+Completed in 56ms (DB: 44) | 302 Found [http://0.0.0.0/comatose_admin/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseAdminController#index (for 127.0.0.1 at 2009-11-14 22:05:43) [GET]
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (parent_id IS NULL) ORDER BY position, title LIMIT 1[0m
+Rendering template within layouts/comatose_admin
+Rendering comatose_admin/index
+  [4;36;1mComatosePage::Version Load (0.3ms)[0m   [0;1mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 1) ORDER BY version[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) [0m
+  [4;36;1mComatosePage Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 1) ORDER BY position, title[0m
+  [4;35;1mComatosePage::Version Load (0.3ms)[0m   [0mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 2) ORDER BY version[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 2) [0m
+Rendered comatose_admin/_page_list_item (7.3ms)
+  [4;35;1mComatosePage::Version Load (0.3ms)[0m   [0mSELECT * FROM `comatose_page_versions` WHERE (`comatose_page_versions`.comatose_page_id = 3) ORDER BY version[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM `comatose_pages` WHERE (`comatose_pages`.parent_id = 3) [0m
+Rendered comatose_admin/_page_list_item (7.3ms)
+Rendered comatose_admin/_page_list_item (22.8ms)
+Completed in 32ms (View: 28, DB: 2) | 200 OK [http://0.0.0.0/comatose_admin]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 22:05:48) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 10ms (View: 4, DB: 3) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:05:50) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/about", "index"=>"about", "page"=>[], "layout"=>"comatose_application"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+
+ActionView::MissingTemplate (Missing layout layouts/comatose_application.erb in view path app/views:vendor/plugins/comatose/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:06:11) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/about", "index"=>"about", "page"=>[], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 37ms (View: 30, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:07:17) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/about", "index"=>"about", "page"=>[], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 7ms (View: 3, DB: 1) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:07:19) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/about", "index"=>"about", "page"=>[], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:07:22) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/about", "index"=>"about", "page"=>[], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:07:24) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/about", "index"=>"about", "page"=>[], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:07:42) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/about", "index"=>"about", "page"=>[], "layout"=>"comatose_application"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/comatose_application
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:08:39) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/about", "index"=>"about", "page"=>[], "layout"=>"application"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/application
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:08:44) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/about", "index"=>"about", "page"=>[], "layout"=>"application"}
+  [4;35;1mComatosePage Load (0.4ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/application
+Completed in 56ms (View: 1, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:10:09) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>[], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = '') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-11-14 22:10:52) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:11:31) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>[], "layout"=>"comatose_content.html.erb"}
+  [4;36;1mComatosePage Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (full_path = '') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 4ms (View: 1, DB: 1) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 22:11:53) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 22:12:05) [GET]
+  [4;35;1mConstraint Load (0.3ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 22:13:16) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 9ms (View: 4, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:13:22) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>["about"], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:13:36) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>["about"], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:13:37) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>["about"], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (1.0ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 5ms (View: 1, DB: 1) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:13:38) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>["about"], "layout"=>"comatose_content.html.erb"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/comatose_content
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:14:20) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>["about"], "layout"=>"application"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/application
+Completed in 3ms (View: 0, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:14:29) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>["about"], "layout"=>"application"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'about') LIMIT 1[0m
+Rendering template within layouts/application
+Completed in 3ms (View: 0, DB: 0) | 200 OK [http://0.0.0.0/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 22:14:34) [GET]
+  [4;35;1mConstraint Load (0.4ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (3.2ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 12ms (View: 4, DB: 4) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:14:37) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>["public_constraint", "4"], "layout"=>"application"}
+  [4;36;1mComatosePage Load (0.4ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (full_path = 'public_constraint/4') LIMIT 1[0m
+  [4;35;1mComatosePage Load (0.2ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = '404') LIMIT 1[0m
+Completed in 3ms (View: 1, DB: 1) | 404 Not Found [http://0.0.0.0/public_constraint/4]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ComatoseController#show (for 127.0.0.1 at 2009-11-14 22:14:45) [GET]
+  Parameters: {"cache_path"=>nil, "use_cache"=>"true", "root"=>"/", "index"=>"", "page"=>["public_constraint", "1"], "layout"=>"application"}
+  [4;35;1mComatosePage Load (0.3ms)[0m   [0mSELECT * FROM `comatose_pages` WHERE (full_path = 'public_constraint/1') LIMIT 1[0m
+  [4;36;1mComatosePage Load (0.2ms)[0m   [0;1mSELECT * FROM `comatose_pages` WHERE (full_path = '404') LIMIT 1[0m
+Completed in 3ms (View: 1, DB: 1) | 404 Not Found [http://0.0.0.0/public_constraint/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 22:15:35) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#show (for 127.0.0.1 at 2009-11-14 22:15:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mConstraint Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+  [4;36;1mConstraint Load (0.5ms)[0m   [0;1mSELECT * FROM `constraints` WHERE (`constraints`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering welcome/show
+Completed in 42ms (View: 35, DB: 3) | 200 OK [http://0.0.0.0/public_constraint/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 22:15:43) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mConstraint Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#show (for 127.0.0.1 at 2009-11-14 22:15:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mConstraint Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+  [4;36;1mConstraint Load (0.6ms)[0m   [0;1mSELECT * FROM `constraints` WHERE (`constraints`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering welcome/show
+Completed in 9ms (View: 2, DB: 3) | 200 OK [http://0.0.0.0/public_constraint/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#show (for 127.0.0.1 at 2009-11-14 22:15:55) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mConstraint Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+  [4;35;1mConstraint Load (0.3ms)[0m   [0mSELECT * FROM `constraints` WHERE (`constraints`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering welcome/show
+Completed in 8ms (View: 2, DB: 2) | 200 OK [http://0.0.0.0/public_constraint/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2009-11-14 22:17:17) [GET]
+  [4;35;1mConstraint Load (0.3ms)[0m   [0mSELECT * FROM `constraints` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mConstraint Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ConstraintsController#index (for 127.0.0.1 at 2009-11-14 22:17:28) [GET]
+  [4;36;1mConstraint Load (0.3ms)[0m   [0;1mSELECT * FROM `constraints` [0m
+Rendering template within layouts/constraints
+Rendering constraints/index
+  [4;35;1mConstraint Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+Completed in 18ms (View: 12, DB: 2) | 200 OK [http://0.0.0.0/constraints/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ConstraintsController#edit (for 127.0.0.1 at 2009-11-14 22:17:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mConstraint Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `constraints`[0m
+  [4;36;1mConstraint Load (0.5ms)[0m   [0;1mSELECT * FROM `constraints` WHERE (`constraints`.`id` = 1) [0m
+Rendering template within layouts/constraints
+Rendering constraints/edit
+Completed in 18ms (View: 11, DB: 2) | 200 OK [http://0.0.0.0/constraints/1/edit]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ConstraintsController#show (for 127.0.0.1 at 2009-11-14 22:17:48) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mConstraint Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `constraints`[0m
+  [4;35;1mConstraint Load (0.4ms)[0m   [0mSELECT * FROM `constraints` WHERE (`constraints`.`id` = 1) [0m
+Rendering template within layouts/constraints
+Rendering constraints/show
+Completed in 12ms (View: 6, DB: 2) | 200 OK [http://0.0.0.0/constraints/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CommentsController#index (for 127.0.0.1 at 2009-11-14 22:18:03) [GET]
+  [4;35;1mComment Load (0.5ms)[0m   [0mSELECT * FROM `comments` [0m
+Rendering template within layouts/comments
+Rendering comments/index
+Completed in 16ms (View: 11, DB: 1) | 200 OK [http://0.0.0.0/comments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CommentsController#new (for 127.0.0.1 at 2009-11-14 22:18:05) [GET]
+  [4;35;1mComment Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `comments`[0m
+Rendering template within layouts/comments
+Rendering comments/new
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://0.0.0.0/comments/new]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CommentsController#create (for 127.0.0.1 at 2009-11-14 22:18:18) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"Luz2Dt0j7whVc+scYqUQLo/rcAAfSPYXdrv7hOssHkc=", "comment"=>{"comment"=>"yo"}}
+  [4;35;1mComment Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `comments`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mComment Create (0.2ms)[0m   [0mINSERT INTO `comments` (`updated_at`, `comment`, `created_at`) VALUES('2009-11-14 22:18:18', 'yo', '2009-11-14 22:18:18')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/comments/1
+Completed in 9ms (DB: 3) | 302 Found [http://0.0.0.0/comments]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CommentsController#show (for 127.0.0.1 at 2009-11-14 22:18:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mComment Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `comments`[0m
+  [4;35;1mComment Load (1.0ms)[0m   [0mSELECT * FROM `comments` WHERE (`comments`.`id` = 1) [0m
+Rendering template within layouts/comments
+Rendering comments/show
+Completed in 12ms (View: 6, DB: 2) | 200 OK [http://0.0.0.0/comments/1]

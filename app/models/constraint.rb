@@ -1,6 +1,6 @@
 class Constraint < ActiveRecord::Base
 
-has_many :comments, :class_name => "comment"
+has_many :comments, :as => :commentable
 
 validates_presence_of :title, :on => :create, :message => "can't be blank"
 validates_presence_of :value, :on => :create, :message => "can't be blank"

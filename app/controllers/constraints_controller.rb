@@ -3,11 +3,14 @@ class ConstraintsController < ApplicationController
   # GET /constraints.xml
   def index
     @constraints = Constraint.all
-
+    if admin?
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @constraints }
     end
+  else 
+    redirect_to '/'
+  end
   end
 
   # GET /constraints/1

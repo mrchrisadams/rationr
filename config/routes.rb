@@ -1,14 +1,18 @@
 ActionController::Routing::Routes.draw do |map|
+  map.root :controller => "welcome"
+
+
   map.resources :comments
 
   map.resources :constraints
 
   map.resources :users
-
+    
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+  map.connect 'public_constraint/:id', :controller => 'welcome', :action => 'show'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
@@ -39,11 +43,21 @@ ActionController::Routing::Routes.draw do |map|
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   # map.root :controller => "welcome"
 
+
+  map.connect 'login', :controller => 'session', :action => 'create'  
+  map.connect 'logout', :controller => 'session', :action => 'destroy'
+
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  map.connect ':controller/:action/:id.:format' 
+  
+  map.comatose_admin   
+  map.comatose_root '', :layout => 'application'
+  
+  
+   
 end

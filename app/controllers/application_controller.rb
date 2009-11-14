@@ -7,4 +7,13 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  
+  # check if the password in session is 'secret'. if so, we return true.
+  
+  # use like  "if admin? do something"
+  def admin?  
+    session[:password] == "secret"  
+  end
+  
+  
 end

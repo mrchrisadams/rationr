@@ -1,0 +1,22 @@
+<%# debugger %>
+
+<%= debug session %>
+
+<%= debug params %>
+
+<h1>you can chuff off</h1>
+
+<h2>help me</h2>
+
+<% form_tag "/login" do %>  
+  Password: <%= password_field_tag :password %>  
+  <%= submit_tag "Login" %>  
+<% end %>
+
+<ul>
+	<% @constraints.each do |constraint| %>
+	
+	<li><%= constraint.title %>, <%= constraint.value %>, <%= constraint.unit %>, <a href="/public_constraint/<%= constraint.id %>">discuss</a></li>
+	
+	<% end %>
+</ul>
