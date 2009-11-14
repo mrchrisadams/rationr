@@ -1,0 +1,8 @@
+db/*.sql*
+log/*
+tmp/
+*.tmproj
+*.sql
+config/database.yml
+vendor/gems/*
+doc/*
