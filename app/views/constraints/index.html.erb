@@ -1,0 +1,26 @@
+<h1>Listing constraints</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Value</th>
+    <th>Unit</th>
+    <th>Description</th>
+  </tr>
+
+<% @constraints.each do |constraint| %>
+  <tr>
+    <td><%=h constraint.title %></td>
+    <td><%=h constraint.value %></td>
+    <td><%=h constraint.unit %></td>
+    <td><%=h constraint.description %></td>
+    <td><%= link_to 'Show', constraint %></td>
+    <td><%= link_to 'Edit', edit_constraint_path(constraint) %></td>
+    <td><%= link_to 'Destroy', constraint, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New constraint', new_constraint_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  value: 1.5
+  unit: MyString
+  description: MyText
+
+two:
+  title: MyString
+  value: 1.5
+  unit: MyString
+  description: MyText

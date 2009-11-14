@@ -1,0 +1,23 @@
+<p>
+  <b>Title:</b>
+  <%=h @constraint.title %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%=h @constraint.value %>
+</p>
+
+<p>
+  <b>Unit:</b>
+  <%=h @constraint.unit %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @constraint.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_constraint_path(@constraint) %> |
+<%= link_to 'Back', constraints_path %>
